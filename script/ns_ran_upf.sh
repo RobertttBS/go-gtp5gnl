@@ -77,9 +77,15 @@ ${EXEC_NS2} ./gtp5g-tunnel add pdr gtp5gtest 4 --pcd 2 --ue-ipv4 ${UE2_IP} --far
 
 ${EXEC_NS2} ip r add ${UE_CIDR} dev gtp5gtest # traffic from UPF to UE, route to gtp5gtest
 
+echo "############### Setup TC ###############"
+${EXEC_NS2} tc qdisc add dev gtp5gtest root handle 1: htb default 1
+${EXEC_NS2} tc class add dev gtp5gtest parent 1: classid 1:1 htb rate 1mbit
+${EXEC_NS2} tc qdisc add dev gtp5gtest parent 1:1 etf clockid CLOCK_TAI skip_sock_check #deadline_mode
+${EXEC_NS2} tc qdisc show dev gtp5gtest
+
 echo "############### Test UP ###############"
-ping -c3 -I ${UE_IP} ${DN_IP}
-ping -c3 -I ${UE2_IP} ${DN_IP}
+ping -c1 -I ${UE_IP} ${DN_IP} # ping -c3 -I 60.60.0.10 60.60.1.10
+ping -c1 -I ${UE2_IP} ${DN_IP} # ping -c3 -I 60.60.0.11 60.60.1.10
 
 echo "############## Stopping ##############"
 sleep 1
