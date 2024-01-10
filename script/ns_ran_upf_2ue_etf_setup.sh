@@ -80,7 +80,7 @@ ${EXEC_NS2} ip r add ${UE_CIDR} dev gtp5gtest # traffic from UPF to UE, route to
 echo "############### Setup TC ###############"
 ${EXEC_NS2} tc qdisc add dev gtp5gtest root handle 1: htb default 1
 ${EXEC_NS2} tc class add dev gtp5gtest parent 1: classid 1:1 htb rate 1mbit
-${EXEC_NS2} tc qdisc add dev gtp5gtest parent 1:1 etf clockid CLOCK_TAI delta 100000000000 skip_sock_check
+${EXEC_NS2} tc qdisc add dev gtp5gtest parent 1:1 etf clockid CLOCK_TAI skip_sock_check deadline_mode
 
 echo "############### Test UP ###############"
 ping -c3 -I ${UE_IP} ${DN_IP} # ping -c3 -I 60.60.0.10 60.60.1.10

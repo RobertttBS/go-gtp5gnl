@@ -33,8 +33,8 @@ sudo ./gtp5g-link add gtp5gtest --ran &
 sleep 0.1
 sudo ./gtp5g-tunnel add qer gtp5gtest 123 --qfi 9
 sudo ./gtp5g-tunnel add qer gtp5gtest 321 --qfi 9
-sudo ./gtp5g-tunnel add qer gtp5gtest 11 --qfi 1 --mbr-dl 1000000 --mbr-ul 1000000 --gbr-dl 500000 --gbr-ul 500000
-sudo ./gtp5g-tunnel add qer gtp5gtest 12 --qfi 1 --mbr-dl 1000000 --mbr-ul 1000000 --gbr-dl 500000 --gbr-ul 500000
+sudo ./gtp5g-tunnel add qer gtp5gtest 11 --qfi 1 --mbr-dl 500000 --mbr-ul 500000 --gbr-dl 350000 --gbr-ul 350000
+sudo ./gtp5g-tunnel add qer gtp5gtest 12 --qfi 1 --mbr-dl 500000 --mbr-ul 500000 --gbr-dl 350000 --gbr-ul 350000
 # the parameter after <ifname> is oid (object identifier)
 sudo ./gtp5g-tunnel add far gtp5gtest 1 --action 2
 # --hdr-creation <description> <o-teid> <peer-ipv4> <peer-port>
@@ -44,8 +44,8 @@ sudo ./gtp5g-tunnel add pdr gtp5gtest 2 --pcd 2 --ue-ipv4 ${UE_IP} --far-id 2 --
 
 sudo ./gtp5g-tunnel add qer gtp5gtest 124 --qfi 9
 sudo ./gtp5g-tunnel add qer gtp5gtest 322 --qfi 9
-sudo ./gtp5g-tunnel add qer gtp5gtest 13 --qfi 1 --mbr-dl 1000000 --mbr-ul 1000000 --gbr-dl 500000 --gbr-ul 500000
-sudo ./gtp5g-tunnel add qer gtp5gtest 14 --qfi 1 --mbr-dl 1000000 --mbr-ul 1000000 --gbr-dl 500000 --gbr-ul 500000
+sudo ./gtp5g-tunnel add qer gtp5gtest 13 --qfi 1 --mbr-dl 500000 --mbr-ul 500000 --gbr-dl 100000 --gbr-ul 100000
+sudo ./gtp5g-tunnel add qer gtp5gtest 14 --qfi 1 --mbr-dl 500000 --mbr-ul 500000 --gbr-dl 100000 --gbr-ul 100000
 sudo ./gtp5g-tunnel add far gtp5gtest 3 --action 2
 sudo ./gtp5g-tunnel add far gtp5gtest 4 --action 2 --hdr-creation 0 79 ${UPF_IP} 2152
 sudo ./gtp5g-tunnel add pdr gtp5gtest 3 --pcd 1 --hdr-rm 0 --ue-ipv4 ${UE2_IP} --f-teid 88 ${RAN_IP} --far-id 3 --qer-id 13
@@ -58,8 +58,8 @@ ${EXEC_NS2} ./gtp5g-link add gtp5gtest &
 sleep 0.1
 ${EXEC_NS2} ./gtp5g-tunnel add qer gtp5gtest 123 --qfi 9 # 123 map the RAN settup
 ${EXEC_NS2} ./gtp5g-tunnel add qer gtp5gtest 321 --qfi 9 # 321 map the RAN settup
-${EXEC_NS2} ./gtp5g-tunnel add qer gtp5gtest 11 --qfi 1 --mbr-dl 1000000 --mbr-ul 1000000 --gbr-dl 500000 --gbr-ul 500000 # 11 is qer-id
-${EXEC_NS2} ./gtp5g-tunnel add qer gtp5gtest 12 --qfi 1 --mbr-dl 1000000 --mbr-ul 1000000 --gbr-dl 500000 --gbr-ul 500000 # 12 is qer-id
+${EXEC_NS2} ./gtp5g-tunnel add qer gtp5gtest 11 --qfi 1 --mbr-dl 500000 --mbr-ul 500000 --gbr-dl 350000 --gbr-ul 350000
+${EXEC_NS2} ./gtp5g-tunnel add qer gtp5gtest 12 --qfi 1 --mbr-dl 500000 --mbr-ul 500000 --gbr-dl 350000 --gbr-ul 350000
 ${EXEC_NS2} ./gtp5g-tunnel add far gtp5gtest 1 --action 2 # add far <ifname> <oid> [options...]
 ${EXEC_NS2} ./gtp5g-tunnel add far gtp5gtest 2 --action 2 --hdr-creation 0 87 ${RAN_IP} 2152 # map to RAN f-teid
 ${EXEC_NS2} ./gtp5g-tunnel add pdr gtp5gtest 1 --pcd 1 --hdr-rm 0 --ue-ipv4 ${UE_IP} --f-teid 78 ${UPF_IP} --far-id 1 --qer-id 11
@@ -67,8 +67,8 @@ ${EXEC_NS2} ./gtp5g-tunnel add pdr gtp5gtest 2 --pcd 2 --ue-ipv4 ${UE_IP} --far-
 
 ${EXEC_NS2} ./gtp5g-tunnel add qer gtp5gtest 124 --qfi 9
 ${EXEC_NS2} ./gtp5g-tunnel add qer gtp5gtest 322 --qfi 9
-${EXEC_NS2} ./gtp5g-tunnel add qer gtp5gtest 13 --qfi 1 --mbr-dl 1000000 --mbr-ul 1000000 --gbr-dl 500000 --gbr-ul 500000
-${EXEC_NS2} ./gtp5g-tunnel add qer gtp5gtest 14 --qfi 1 --mbr-dl 1000000 --mbr-ul 1000000 --gbr-dl 500000 --gbr-ul 500000
+${EXEC_NS2} ./gtp5g-tunnel add qer gtp5gtest 13 --qfi 1 --mbr-dl 500000 --mbr-ul 500000 --gbr-dl 100000 --gbr-ul 100000
+${EXEC_NS2} ./gtp5g-tunnel add qer gtp5gtest 14 --qfi 1 --mbr-dl 500000 --mbr-ul 500000 --gbr-dl 100000 --gbr-ul 100000
 ${EXEC_NS2} ./gtp5g-tunnel add far gtp5gtest 3 --action 2
 ${EXEC_NS2} ./gtp5g-tunnel add far gtp5gtest 4 --action 2 --hdr-creation 0 88 ${RAN_IP} 2152
 ${EXEC_NS2} ./gtp5g-tunnel add pdr gtp5gtest 3 --pcd 1 --hdr-rm 0 --ue-ipv4 ${UE2_IP} --f-teid 79 ${UPF_IP} --far-id 3 --qer-id 13
@@ -77,28 +77,38 @@ ${EXEC_NS2} ./gtp5g-tunnel add pdr gtp5gtest 4 --pcd 2 --ue-ipv4 ${UE2_IP} --far
 
 ${EXEC_NS2} ip r add ${UE_CIDR} dev gtp5gtest # traffic from UPF to UE, route to gtp5gtest
 
+# echo "############### Setup tx queue numbe r##"
+# ${EXEC_NS2} ethtool -L gtp5gtest tx 3
+# ${EXEC_NS2} ethtool -l gtp5gtest
+
 echo "############### Setup TC ###############"
-${EXEC_NS2} tc qdisc add dev gtp5gtest root handle 1: htb default 1
-${EXEC_NS2} tc class add dev gtp5gtest parent 1: classid 1:1 htb rate 1mbit
-${EXEC_NS2} tc qdisc add dev gtp5gtest parent 1:1 etf clockid CLOCK_TAI skip_sock_check #deadline_mode
-${EXEC_NS2} tc qdisc show dev gtp5gtest
+echo "============== tbf ==============="
+${EXEC_NS2} tc qdisc add dev gtp5gtest handle 10: root tbf rate 0.5mbit burst 5kb latency 70ms peakrate 1mbit minburst 1540
+echo "============== skbprio ==============="
+${EXEC_NS2} tc qdisc add dev gtp5gtest parent 10:1 handle 100: skbprio
 
-echo "############### Test UP ###############"
-ping -c1 -I ${UE_IP} ${DN_IP} # ping -c3 -I 60.60.0.10 60.60.1.10
-ping -c1 -I ${UE2_IP} ${DN_IP} # ping -c3 -I 60.60.0.11 60.60.1.10
+# echo "============== eBPF with fq ==============="
+# ${EXEC_NS2} tc qdisc replace dev gtp5gtest clsact
+# ${EXEC_NS2} tc filter add dev gtp5gtest egress bpf da obj /home/ubuntu/Desktop/go-gtp5gnl/tc-xdp-drop-tcp.o sec tc
+# ${EXEC_NS2} tc qdisc add dev gtp5gtest root fq
+# ${EXEC_NS2} tc qdisc show dev gtp5gtest
 
-echo "############## Stopping ##############"
-sleep 1
-sudo killall -15 gtp5g-link
-sleep 1
+# echo "############### Test UP ###############"
+ping -c3 -I ${UE_IP} ${DN_IP} # ping -c3 -I 60.60.0.10 60.60.1.10
+ping -c3 -I ${UE2_IP} ${DN_IP} # ping -c3 -I 60.60.0.11 60.60.1.10
 
-if [ ${DUMP_NS} ]
-then
-   ${EXEC_NS2} kill -SIGINT ${TCPDUMP_PID}
-fi
+# echo "############## Stopping ##############"
+# sleep 1
+# sudo killall -15 gtp5g-link
+# sleep 1
 
-sudo ip link del gtp5gtest
-sudo ip link del veth0
-sudo ip netns del ${NS2}
-sudo ip addr del ${UE_IP}/32 dev lo
-sudo ip addr del ${UE2_IP}/32 dev lo
+# if [ ${DUMP_NS} ]
+# then
+#    ${EXEC_NS2} kill -SIGINT ${TCPDUMP_PID}
+# fi
+
+# sudo ip link del gtp5gtest
+# sudo ip link del veth0
+# sudo ip netns del ${NS2}
+# sudo ip addr del ${UE_IP}/32 dev lo
+# sudo ip addr del ${UE2_IP}/32 dev lo
